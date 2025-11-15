@@ -21,6 +21,13 @@ class PterodactylClient {
     this.baseURL = process.env.NEXT_PUBLIC_PTERODACTYL_URL || 'https://console.dragohost.cloud';
     this.apiKey = process.env.PTERODACTYL_API_KEY || '';
 
+    // Log configuration (without exposing full API key)
+    console.log('Pterodactyl Client Config:', {
+      baseURL: this.baseURL,
+      apiKeySet: !!this.apiKey,
+      apiKeyPrefix: this.apiKey ? this.apiKey.substring(0, 8) + '...' : 'NOT SET',
+    });
+
     // Initialize axios client with default configuration
     this.client = axios.create({
       baseURL: `${this.baseURL}/api/application`,
@@ -29,7 +36,7 @@ class PterodactylClient {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      timeout: 10000, // 10 second timeout
+      timeout: 15000, // 15 second timeout for serverless
     });
 
     // Add response interceptor for error handling
@@ -38,8 +45,11 @@ class PterodactylClient {
       (error: AxiosError<PterodactylError>) => {
         console.error('Pterodactyl API Error:', {
           status: error.response?.status,
+          statusText: error.response?.statusText,
           data: error.response?.data,
           url: error.config?.url,
+          baseURL: error.config?.baseURL,
+          message: error.message,
         });
         return Promise.reject(error);
       }
