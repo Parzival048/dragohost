@@ -95,55 +95,133 @@ export function LocationMap() {
               {/* Grid Overlay */}
               <div className="absolute inset-0 bg-[linear-gradient(rgba(14,165,233,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(14,165,233,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
-              {/* World Map SVG - Simplified continents */}
-              <svg className="absolute inset-0 w-full h-full opacity-15" viewBox="0 0 2000 1000" preserveAspectRatio="xMidYMid meet">
+              {/* World Map SVG - Accurate simplified continents */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 2000 857" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <linearGradient id="map-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#0ea5e9" />
                     <stop offset="100%" stopColor="#a855f7" />
                   </linearGradient>
                 </defs>
+
+                {/* Greenland */}
+                <path
+                  d="M 520,80 L 580,70 L 640,75 L 680,90 L 700,110 L 710,140 L 705,170 L 685,190 L 650,200 L 600,195 L 560,185 L 530,165 L 515,140 L 510,110 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
                 {/* North America */}
                 <path
-                  d="M 100,200 L 120,150 L 180,120 L 250,100 L 320,110 L 380,140 L 420,180 L 450,240 L 460,300 L 450,360 L 420,420 L 380,460 L 320,480 L 280,490 L 240,480 L 200,450 L 160,400 L 120,340 L 100,280 Z"
+                  d="M 100,150 L 150,120 L 200,110 L 250,105 L 310,110 L 370,125 L 430,150 L 480,185 L 520,230 L 545,280 L 555,330 L 550,380 L 530,420 L 490,450 L 440,470 L 380,480 L 320,485 L 260,480 L 210,465 L 170,440 L 140,410 L 115,370 L 100,330 L 90,280 L 85,230 L 90,180 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
+
+                {/* Central America */}
+                <path
+                  d="M 380,485 L 400,490 L 420,500 L 435,510 L 445,525 L 440,540 L 425,545 L 405,542 L 385,535 L 375,520 L 375,505 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
                 {/* South America */}
                 <path
-                  d="M 380,500 L 400,520 L 420,560 L 430,620 L 420,700 L 400,780 L 370,840 L 330,880 L 290,900 L 260,890 L 240,860 L 230,810 L 240,750 L 260,680 L 290,620 L 320,560 L 350,520 Z"
+                  d="M 445,545 L 470,560 L 490,585 L 505,620 L 515,665 L 518,710 L 512,755 L 495,790 L 465,815 L 425,830 L 385,835 L 350,828 L 325,810 L 310,785 L 305,750 L 310,710 L 325,670 L 345,630 L 370,595 L 400,570 L 425,555 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
+
+                {/* Iceland */}
+                <path
+                  d="M 750,145 L 770,143 L 785,147 L 790,155 L 785,163 L 770,165 L 755,162 L 748,155 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
                 {/* Europe */}
                 <path
-                  d="M 850,180 L 900,160 L 960,170 L 1000,200 L 1020,240 L 1010,280 L 980,310 L 940,320 L 890,310 L 860,280 L 850,240 Z"
+                  d="M 850,170 L 880,160 L 920,155 L 960,158 L 1000,170 L 1030,190 L 1050,215 L 1060,245 L 1055,275 L 1035,300 L 1005,315 L 970,325 L 930,328 L 890,320 L 860,305 L 840,280 L 830,250 L 832,220 L 840,195 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
+
+                {/* Scandinavia */}
+                <path
+                  d="M 920,85 L 950,78 L 975,80 L 990,90 L 1000,110 L 1005,135 L 1000,160 L 985,175 L 965,180 L 945,178 L 930,168 L 920,150 L 915,125 L 915,100 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
                 {/* Africa */}
                 <path
-                  d="M 920,340 L 960,320 L 1020,330 L 1080,360 L 1120,420 L 1140,500 L 1130,580 L 1100,660 L 1050,720 L 980,760 L 920,780 L 870,770 L 840,740 L 830,680 L 840,600 L 860,520 L 890,440 L 910,380 Z"
+                  d="M 960,330 L 1000,320 L 1040,325 L 1080,340 L 1115,365 L 1140,400 L 1155,445 L 1160,495 L 1158,545 L 1148,595 L 1128,640 L 1100,680 L 1065,715 L 1020,740 L 970,755 L 920,760 L 875,755 L 840,740 L 815,715 L 800,680 L 795,635 L 800,590 L 815,545 L 840,500 L 870,460 L 905,425 L 935,390 L 955,355 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
+
                 {/* Asia */}
                 <path
-                  d="M 1050,120 L 1150,100 L 1280,110 L 1420,140 L 1560,180 L 1680,240 L 1760,320 L 1800,400 L 1810,480 L 1780,540 L 1720,580 L 1640,600 L 1540,590 L 1440,560 L 1360,510 L 1300,440 L 1260,360 L 1240,280 L 1220,220 L 1180,170 L 1120,140 Z"
+                  d="M 1060,140 L 1120,125 L 1190,120 L 1270,125 L 1360,140 L 1450,165 L 1540,200 L 1620,245 L 1690,300 L 1740,360 L 1775,420 L 1795,480 L 1800,535 L 1790,585 L 1765,625 L 1725,655 L 1675,675 L 1615,685 L 1550,685 L 1485,675 L 1425,655 L 1370,625 L 1320,585 L 1280,540 L 1250,490 L 1230,440 L 1220,385 L 1215,330 L 1215,275 L 1220,220 L 1230,175 L 1180,185 L 1140,195 L 1100,200 L 1070,195 L 1055,175 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
+
+                {/* India Subcontinent */}
+                <path
+                  d="M 1330,430 L 1365,415 L 1395,425 L 1415,450 L 1425,485 L 1425,520 L 1415,555 L 1395,580 L 1365,590 L 1335,585 L 1310,565 L 1295,535 L 1290,500 L 1295,465 L 1310,440 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Southeast Asia */}
+                <path
+                  d="M 1480,500 L 1510,505 L 1535,520 L 1545,545 L 1540,570 L 1520,585 L 1490,590 L 1465,580 L 1450,560 L 1450,535 L 1460,515 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Japan */}
+                <path
+                  d="M 1750,320 L 1770,310 L 1790,315 L 1800,330 L 1805,350 L 1800,375 L 1785,395 L 1765,405 L 1745,400 L 1730,385 L 1725,360 L 1730,340 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
                 {/* Australia */}
                 <path
-                  d="M 1500,680 L 1580,670 L 1660,690 L 1720,730 L 1750,790 L 1740,840 L 1700,870 L 1640,880 L 1570,870 L 1510,840 L 1480,790 L 1470,730 Z"
+                  d="M 1550,630 L 1600,625 L 1655,635 L 1705,655 L 1745,685 L 1770,720 L 1780,760 L 1775,795 L 1755,820 L 1720,835 L 1675,842 L 1625,840 L 1575,828 L 1535,805 L 1505,775 L 1485,735 L 1480,695 L 1488,660 L 1510,638 Z"
                   fill="url(#map-gradient)"
-                  stroke="rgba(14, 165, 233, 0.4)"
-                  strokeWidth="2"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
+                {/* New Zealand */}
+                <path
+                  d="M 1850,760 L 1865,755 L 1878,762 L 1882,778 L 1875,795 L 1860,802 L 1845,798 L 1838,785 L 1840,770 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
+                />
+
+                {/* Madagascar */}
+                <path
+                  d="M 1140,620 L 1155,615 L 1168,625 L 1173,645 L 1170,670 L 1160,690 L 1145,698 L 1132,693 L 1125,675 L 1128,650 L 1135,630 Z"
+                  fill="url(#map-gradient)"
+                  stroke="rgba(14, 165, 233, 0.5)"
+                  strokeWidth="1.5"
                 />
               </svg>
 
