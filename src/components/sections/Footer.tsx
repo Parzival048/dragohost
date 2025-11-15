@@ -64,16 +64,16 @@ const footerLinks = {
     { name: 'Panel Demo', href: process.env.NEXT_PUBLIC_PTERODACTYL_URL || '#' },
   ],
   Support: [
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'Discord Community', href: process.env.NEXT_PUBLIC_DISCORD_URL || 'https://discord.gg/dragohost' },
     { name: 'Documentation', href: '#docs' },
-    { name: 'Discord Community', href: process.env.NEXT_PUBLIC_DISCORD_URL || '#' },
     { name: 'Knowledge Base', href: '#kb' },
-    { name: 'Contact Us', href: '#contact' },
   ],
-  Company: [
-    { name: 'About Us', href: '#about' },
-    { name: 'Terms of Service', href: '#terms' },
-    { name: 'Privacy Policy', href: '#privacy' },
-    { name: 'Status Page', href: '#status' },
+  Legal: [
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms & Conditions', href: '/terms' },
+    { name: 'Refund Policy', href: '/refund' },
+    { name: 'Shipping & Delivery', href: '/delivery' },
   ],
 };
 
