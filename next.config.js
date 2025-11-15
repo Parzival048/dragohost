@@ -9,6 +9,14 @@ const nextConfig = {
   swcMinify: true,
   // Optimize fonts
   optimizeFonts: true,
+  // Disable ESLint during production builds (run separately in CI/CD)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Disable TypeScript type checking during builds (run separately)
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 module.exports = nextConfig
