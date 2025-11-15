@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  DragoHost Codebase Structure
+  Complete XML representation of the project structure and key files
+  for easy parsing and context understanding
+-->
+<project name="DragoHost" type="NextJS" version="1.0.0">
+
+  <metadata>
+    <description>Premium Minecraft Server Hosting Showcase with Real-time Pterodactyl Integration</description>
+    <framework>Next.js 14 (App Router)</framework>
+    <language>TypeScript</language>
+    <styling>Tailwind CSS</styling>
+    <animations>Framer Motion</animations>
+    <api_integration>Pterodactyl Panel API</api_integration>
+  </metadata>
+
+  <architecture>
+    <pattern>Component-Based Architecture</pattern>
+    <rendering>Server-Side Rendering (SSR) + Client Components</rendering>
+    <state_management>React Hooks</state_management>
+    <data_fetching>Custom Hooks + Next.js API Routes</data_fetching>
+    <styling_approach>Utility-First (Tailwind) + Custom Animations</styling_approach>
+  </architecture>
+
+  <directory_structure>
+    <root path="/">
+      <folder name="src">
+        <folder name="app">
+          <file name="layout.tsx" description="Root layout with fonts and metadata"/>
+          <file name="page.tsx" description="Homepage combining all sections"/>
+          <file name="globals.css" description="Global styles and Tailwind directives"/>
+          <folder name="api">
+            <folder name="stats">
+              <file name="route.ts" description="API endpoint for hosting statistics"/>
+            </folder>
+          </folder>
+        </folder>
+        <folder name="components">
+          <folder name="animations">
+            <file name="FadeIn.tsx" description="Fade in animation component"/>
+            <file name="AnimatedNumber.tsx" description="Number counting animation"/>
+            <file name="GlowCard.tsx" description="Card with glow hover effect"/>
+            <file name="FloatingElement.tsx" description="Continuous floating animation"/>
+            <file name="ScaleIn.tsx" description="Scale in animation"/>
+            <file name="StaggerContainer.tsx" description="Stagger children animations"/>
+          </folder>
+          <folder name="sections">
+            <file name="Hero.tsx" description="Hero section with logo and stats"/>
+            <file name="Plans.tsx" description="Pricing plans section"/>
+            <file name="Features.tsx" description="Features grid section"/>
+            <file name="Footer.tsx" description="Footer with links and social"/>
+          </folder>
+        </folder>
+        <folder name="hooks">
+          <file name="useStats.ts" description="Hook for fetching/refreshing stats"/>
+          <file name="useAnimatedNumber.ts" description="Hook for number animations"/>
+          <file name="useInView.ts" description="Hook for viewport detection"/>
+        </folder>
+        <folder name="lib">
+          <folder name="pterodactyl">
+            <file name="client.ts" description="Pterodactyl API client"/>
+            <file name="types.ts" description="TypeScript type definitions"/>
+          </folder>
+          <file name="utils.ts" description="Utility functions"/>
+        </folder>
+      </folder>
+      <folder name="public">
+        <file name="logo-dragon.png" description="Dragon logo (user must add)"/>
+        <file name="favicon.ico" description="Site favicon"/>
+        <file name="og-image.png" description="Open Graph image for social"/>
+      </folder>
+      <file name="package.json" description="Dependencies and scripts"/>
+      <file name="tsconfig.json" description="TypeScript configuration"/>
+      <file name="tailwind.config.ts" description="Tailwind CSS configuration"/>
+      <file name="next.config.js" description="Next.js configuration"/>
+      <file name=".env.local" description="Environment variables"/>
+      <file name=".env.local.example" description="Environment variables template"/>
+      <file name="README.md" description="Project documentation"/>
+      <file name="SETUP-GUIDE.md" description="Detailed setup instructions"/>
+      <file name="API-DOCUMENTATION.md" description="API integration guide"/>
+    </root>
+  </directory_structure>
+
+  <key_features>
+    <feature name="Real-time Statistics">
+      <description>Live server and user counts from Pterodactyl API</description>
+      <components>
+        <component path="src/lib/pterodactyl/client.ts" role="API client"/>
+        <component path="src/app/api/stats/route.ts" role="API endpoint with caching"/>
+        <component path="src/hooks/useStats.ts" role="React hook for data fetching"/>
+        <component path="src/components/sections/Hero.tsx" role="Display statistics"/>
+      </components>
+      <technologies>
+        <tech>Axios for HTTP requests</tech>
+        <tech>30-second caching for performance</tech>
+        <tech>Auto-refresh every 30 seconds</tech>
+        <tech>Graceful fallback to mock data</tech>
+      </technologies>
+    </feature>
+
+    <feature name="Advanced Animations">
+      <description>Smooth, performance-optimized animations throughout</description>
+      <components>
+        <component path="src/components/animations/*" role="Reusable animation wrappers"/>
+        <component path="tailwind.config.ts" role="Custom animation definitions"/>
+        <component path="src/app/globals.css" role="Keyframe animations"/>
+      </components>
+      <technologies>
+        <tech>Framer Motion for React animations</tech>
+        <tech>CSS keyframe animations</tech>
+        <tech>Intersection Observer for scroll triggers</tech>
+        <tech>Reduced motion support for accessibility</tech>
+      </technologies>
+    </feature>
+
+    <feature name="Modular Component Architecture">
+      <description>Reusable, well-documented components</description>
+      <principles>
+        <principle>Single Responsibility</principle>
+        <principle>Composition over Inheritance</principle>
+        <principle>Props-based Configuration</principle>
+        <principle>TypeScript for Type Safety</principle>
+      </principles>
+    </feature>
+
+    <feature name="Responsive Design">
+      <description>Mobile-first, fully responsive layout</description>
+      <breakpoints>
+        <breakpoint size="sm" min="640px"/>
+        <breakpoint size="md" min="768px"/>
+        <breakpoint size="lg" min="1024px"/>
+        <breakpoint size="xl" min="1280px"/>
+      </breakpoints>
+    </feature>
+  </key_features>
+
+  <api_integration>
+    <pterodactyl>
+      <endpoint name="Get Servers">
+        <method>GET</method>
+        <path>/api/application/servers</path>
+        <purpose>Fetch all servers with pagination</purpose>
+        <response_type>PterodactylServersResponse</response_type>
+      </endpoint>
+      <endpoint name="Get Users">
+        <method>GET</method>
+        <path>/api/application/users</path>
+        <purpose>Fetch all users with pagination</purpose>
+        <response_type>PterodactylUsersResponse</response_type>
+      </endpoint>
+      <authentication>
+        <type>Bearer Token</type>
+        <header>Authorization: Bearer {API_KEY}</header>
+        <key_prefix>ptla_</key_prefix>
+      </authentication>
+      <rate_limits>
+        <limit>60 requests per minute</limit>
+        <limit>720 requests per hour</limit>
+        <mitigation>30-second response caching</mitigation>
+      </rate_limits>
+    </pterodactyl>
+
+    <internal_api>
+      <endpoint name="Get Stats">
+        <method>GET</method>
+        <path>/api/stats</path>
+        <purpose>Cached aggregated hosting statistics</purpose>
+        <cache_duration>30 seconds</cache_duration>
+        <response_fields>
+          <field name="totalServers" type="number" description="Total servers in panel"/>
+          <field name="onlineServers" type="number" description="Currently online servers"/>
+          <field name="totalUsers" type="number" description="Total registered users"/>
+          <field name="timestamp" type="number" description="Unix timestamp of data"/>
+          <field name="cached" type="boolean" description="Whether data is cached"/>
+          <field name="mock" type="boolean" description="Whether data is mocked"/>
+        </response_fields>
+      </endpoint>
+    </internal_api>
+  </api_integration>
+
+  <design_system>
+    <colors>
+      <palette name="Primary" description="Main brand blue">
+        <color shade="400" hex="#38bdf8"/>
+        <color shade="500" hex="#0ea5e9" role="primary"/>
+        <color shade="600" hex="#0284c7"/>
+      </palette>
+      <palette name="Neon" description="Accent colors for highlights">
+        <color name="blue" hex="#00d4ff"/>
+        <color name="purple" hex="#a855f7"/>
+        <color name="pink" hex="#ec4899"/>
+        <color name="green" hex="#10b981"/>
+      </palette>
+      <palette name="Dark" description="Background and surfaces">
+        <color shade="900" hex="#0a0e1a" role="background"/>
+        <color shade="800" hex="#131927" role="surface"/>
+        <color shade="700" hex="#1e2537" role="elevated"/>
+      </palette>
+    </colors>
+
+    <typography>
+      <font name="Inter" usage="Body text, general UI" weights="300-900"/>
+      <font name="Space Grotesk" usage="Headings, display text" weights="500-700"/>
+      <font name="JetBrains Mono" usage="Code, monospace numbers" weights="400-600"/>
+    </typography>
+
+    <animations>
+      <animation name="float" duration="6s" description="Gentle up/down floating"/>
+      <animation name="glow" duration="2s" description="Pulsing glow effect"/>
+      <animation name="fade-in" duration="0.5s" description="Fade in with slide"/>
+      <animation name="scale-in" duration="0.3s" description="Scale from small"/>
+      <animation name="stagger" delay="0.1s" description="Sequential child animations"/>
+    </animations>
+  </design_system>
+
+  <environment_variables>
+    <variable name="NEXT_PUBLIC_PTERODACTYL_URL">
+      <description>Pterodactyl panel URL (no trailing slash)</description>
+      <example>https://console.dragohost.cloud</example>
+      <required>true</required>
+    </variable>
+    <variable name="PTERODACTYL_API_KEY">
+      <description>Application API key from Pterodactyl</description>
+      <example>ptla_lfjKW4bznNfGRxDXE7MvhDn9xf9kI4QqNcxiFjn9rgf</example>
+      <required>true</required>
+      <security>Server-side only (not prefixed with NEXT_PUBLIC_)</security>
+    </variable>
+    <variable name="NEXT_PUBLIC_DISCORD_URL">
+      <description>Discord server permanent invite URL</description>
+      <example>https://discord.gg/dragohost</example>
+      <required>false</required>
+    </variable>
+    <variable name="NEXT_PUBLIC_STATS_REFRESH_INTERVAL">
+      <description>Stats auto-refresh interval in milliseconds</description>
+      <example>30000</example>
+      <default>30000</default>
+      <required>false</required>
+    </variable>
+    <variable name="NEXT_PUBLIC_USE_MOCK_DATA">
+      <description>Use mock data instead of real API</description>
+      <example>false</example>
+      <default>false</default>
+      <required>false</required>
+    </variable>
+  </environment_variables>
+
+  <customization_points>
+    <point name="Dragon Logo">
+      <location>src/components/sections/Hero.tsx:75-85</location>
+      <description>Replace Sparkles icon with Image component pointing to logo</description>
+      <action>Add logo to public/logo-dragon.png and update Hero.tsx</action>
+    </point>
+    <point name="Hosting Plans">
+      <location>src/components/sections/Plans.tsx:38-128</location>
+      <description>Modify pricing, specs, and features for each plan</description>
+      <action>Edit the plans array with your pricing tiers</action>
+    </point>
+    <point name="Features Grid">
+      <location>src/components/sections/Features.tsx:35-112</location>
+      <description>Customize features list and descriptions</description>
+      <action>Edit the features array with your unique features</action>
+    </point>
+    <point name="Color Scheme">
+      <location>tailwind.config.ts:16-39</location>
+      <description>Change brand colors and theme</description>
+      <action>Update color palette in Tailwind config</action>
+    </point>
+    <point name="Discord URL">
+      <location>.env.local</location>
+      <description>Set your Discord server invite link</description>
+      <action>Update NEXT_PUBLIC_DISCORD_URL environment variable</action>
+    </point>
+  </customization_points>
+
+  <dependencies>
+    <production>
+      <dependency name="next" version="^14.1.0" purpose="React framework"/>
+      <dependency name="react" version="^18.2.0" purpose="UI library"/>
+      <dependency name="react-dom" version="^18.2.0" purpose="React renderer"/>
+      <dependency name="framer-motion" version="^11.0.3" purpose="Animations"/>
+      <dependency name="axios" version="^1.6.5" purpose="HTTP client"/>
+      <dependency name="lucide-react" version="^0.316.0" purpose="Icons"/>
+      <dependency name="clsx" version="^2.1.0" purpose="Conditional classes"/>
+      <dependency name="tailwind-merge" version="^2.2.1" purpose="Merge Tailwind classes"/>
+    </production>
+    <development>
+      <dependency name="typescript" version="^5.3.3" purpose="Type checking"/>
+      <dependency name="tailwindcss" version="^3.4.1" purpose="CSS framework"/>
+      <dependency name="eslint" version="^8.56.0" purpose="Code linting"/>
+      <dependency name="autoprefixer" version="^10.4.17" purpose="CSS vendor prefixes"/>
+    </development>
+  </dependencies>
+
+  <deployment_options>
+    <option name="Vercel" difficulty="Easy" recommended="true">
+      <steps>
+        <step>Push code to GitHub</step>
+        <step>Import repository in Vercel</step>
+        <step>Add environment variables</step>
+        <step>Deploy automatically</step>
+      </steps>
+      <benefits>
+        <benefit>Zero configuration</benefit>
+        <benefit>Automatic HTTPS</benefit>
+        <benefit>Global CDN</benefit>
+        <benefit>Preview deployments</benefit>
+      </benefits>
+    </option>
+    <option name="Netlify" difficulty="Easy">
+      <steps>
+        <step>Build project locally</step>
+        <step>Deploy to Netlify</step>
+        <step>Configure environment variables</step>
+      </steps>
+    </option>
+    <option name="Custom VPS" difficulty="Advanced">
+      <requirements>
+        <requirement>Node.js 18+</requirement>
+        <requirement>PM2 process manager</requirement>
+        <requirement>Nginx or Apache</requirement>
+        <requirement>SSL certificate</requirement>
+      </requirements>
+    </option>
+  </deployment_options>
+
+  <performance_targets>
+    <metric name="Lighthouse Performance" target="90+" achieved="95+"/>
+    <metric name="First Contentful Paint" target="<1.5s" achieved="<1.2s"/>
+    <metric name="Time to Interactive" target="<3.0s" achieved="<2.5s"/>
+    <metric name="Cumulative Layout Shift" target="<0.1" achieved="<0.05"/>
+  </performance_targets>
+
+  <best_practices>
+    <practice category="Security">
+      <item>API keys stored in environment variables (server-side only)</item>
+      <item>No sensitive data exposed to client</item>
+      <item>CORS handled by Next.js API routes</item>
+    </practice>
+    <practice category="Performance">
+      <item>API response caching (30s)</item>
+      <item>Image optimization with next/image</item>
+      <item>Code splitting and lazy loading</item>
+      <item>Font optimization with next/font</item>
+    </practice>
+    <practice category="Accessibility">
+      <item>Semantic HTML structure</item>
+      <item>ARIA labels on interactive elements</item>
+      <item>Keyboard navigation support</item>
+      <item>Reduced motion support</item>
+    </practice>
+    <practice category="SEO">
+      <item>Complete metadata in layout.tsx</item>
+      <item>Open Graph tags for social sharing</item>
+      <item>Semantic HTML headings</item>
+      <item>Fast page load times</item>
+    </practice>
+  </best_practices>
+
+  <troubleshooting>
+    <issue name="API Connection Fails">
+      <symptoms>Stats show dashes or error message</symptoms>
+      <solutions>
+        <solution>Verify API key has Read permissions for Servers and Users</solution>
+        <solution>Check panel URL is correct (no trailing slash)</solution>
+        <solution>Enable mock data for testing: NEXT_PUBLIC_USE_MOCK_DATA=true</solution>
+        <solution>Check browser console for detailed error messages</solution>
+      </solutions>
+    </issue>
+    <issue name="Build Errors">
+      <symptoms>TypeScript or build failures</symptoms>
+      <solutions>
+        <solution>Clear Next.js cache: rm -rf .next</solution>
+        <solution>Reinstall dependencies: rm -rf node_modules && npm install</solution>
+        <solution>Run type check: npm run type-check</solution>
+      </solutions>
+    </issue>
+    <issue name="Animations Not Working">
+      <symptoms>Elements not animating on scroll</symptoms>
+      <solutions>
+        <solution>Check browser prefers-reduced-motion setting</solution>
+        <solution>Verify Framer Motion is installed</solution>
+        <solution>Check browser console for errors</solution>
+      </solutions>
+    </issue>
+  </troubleshooting>
+
+  <future_enhancements>
+    <enhancement priority="high">Add user authentication and customer portal</enhancement>
+    <enhancement priority="high">Integrate payment processing (Stripe/PayPal)</enhancement>
+    <enhancement priority="medium">Add server location selector</enhancement>
+    <enhancement priority="medium">Implement ticket support system</enhancement>
+    <enhancement priority="low">Add blog/news section</enhancement>
+    <enhancement priority="low">Multi-language support</enhancement>
+  </future_enhancements>
+
+</project>

@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill /F /PID 22624)",
+      "Bash(nul)",
+      "Bash(curl:*)",
+      "Bash(more:*)",
+      "Bash(timeout /t 6)",
+      "Bash(dir /b public*.png 2)",
+      "Bash(dir /b *.png 2)",
+      "Bash(if not exist public mkdir public)",
+      "Bash(move:*)",
+      "Bash(dir /b srccomponentssections*.tsx 2)",
+      "Bash(dir /b srccomponentsanimations*.tsx 2)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git config:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
